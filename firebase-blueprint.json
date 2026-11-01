@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "bonsai": {
+      "title": "Bonsai",
+      "description": "Represents a digital bonsai owned by a user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique ID of the bonsai" },
+        "ownerId": { "type": "string", "description": "Owner user's UID" },
+        "name": { "type": "string", "description": "Custom name of the bonsai" },
+        "type": { "type": "string", "description": "Type of bonsai (e.g., Pine, Maple, Cherry)" },
+        "level": { "type": "integer", "description": "Current level of the bonsai" },
+        "experience": { "type": "integer", "description": "Current experience points" },
+        "water": { "type": "integer", "description": "Water level from 0 to 100" },
+        "fertilizer": { "type": "integer", "description": "Fertilizer level from 0 to 100" },
+        "sunlight": { "type": "string", "description": "Current sunlight level (sunny, half-shade, shade)" },
+        "wind": { "type": "string", "description": "Current wind level (good, normal, poor)" },
+        "status": { "type": "string", "description": "Overall status of the bonsai" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" },
+        "lastWateredAt": { "type": "string", "format": "date-time", "description": "Timestamp of last watering" },
+        "lastFertilizedAt": { "type": "string", "format": "date-time", "description": "Timestamp of last fertilizing" }
+      },
+      "required": ["id", "ownerId", "name", "type", "level", "experience", "water", "fertilizer", "sunlight", "wind", "status", "createdAt", "updatedAt"]
+    },
+    "diary": {
+      "title": "Diary",
+      "description": "Represents a care journal entry for a bonsai.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique ID of the diary entry" },
+        "bonsaiId": { "type": "string", "description": "ID of the corresponding bonsai" },
+        "ownerId": { "type": "string", "description": "Owner user's UID" },
+        "date": { "type": "string", "description": "Date of the entry (YYYY-MM-DD)" },
+        "title": { "type": "string", "description": "Title of the entry" },
+        "content": { "type": "string", "description": "Content of the entry" },
+        "sunlight": { "type": "string", "description": "Sunlight setting recorded" },
+        "wind": { "type": "string", "description": "Wind setting recorded" },
+        "watered": { "type": "boolean", "description": "Whether watered on this day" },
+        "fertilized": { "type": "boolean", "description": "Whether fertilized on this day" },
+        "aiComment": { "type": "string", "description": "Feedback comment from Gemini AI Bonsai Master" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["id", "bonsaiId", "ownerId", "date", "title", "content", "sunlight", "wind", "watered", "fertilized", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/bonsais/{bonsaiId}": {
+      "schema": "bonsai",
+      "description": "Collection of bonsai trees managed by users"
+    },
+    "/bonsais/{bonsaiId}/diaries/{diaryId}": {
+      "schema": "diary",
+      "description": "Subcollection of care logs and diaries for a specific bonsai"
+    }
+  }
+}

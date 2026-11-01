@@ -1,0 +1,6 @@
+{
+  "name": "デジタル盆栽育成 - Bonsai Care",
+  "description": "水やりや肥料のリマインダー通知、日当たり・風通しの管理記録を残せる日記機能、そしてAI盆栽マスターのアドバイスが付いたデジタル盆栽育成アプリです。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
